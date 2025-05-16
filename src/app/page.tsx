@@ -331,7 +331,8 @@ export default function Home() {
 
           <div className="flex justify-center">
             <div className="bg-foreground/5 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-[#ffc700]/20 max-w-3xl w-full hover:shadow-[0_0_30px_rgba(255,199,0,0.15)] transition-all">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
+              {/* Desktop version - hidden on small screens, shown on medium and up */}
+              <div className="hidden md:block relative aspect-[16/9] w-full overflow-hidden rounded-xl">
                 <iframe
                   src="https://open.spotify.com/embed/playlist/1GCAhSB8i64V4CWctPcyHY?utm_source=generator&theme=0"
                   width="100%"
@@ -339,7 +340,19 @@ export default function Home() {
                   style={{minHeight: '380px', border: 0}}
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  className="absolute inset-0"
+                  className="absolute inset-0 hidden md:block"
+                ></iframe>
+              </div>
+
+              {/* Mobile version - shown on small screens, hidden on medium and up */}
+              <div className="md:hidden relative w-full overflow-hidden rounded-xl">
+                <iframe
+                  src="https://open.spotify.com/embed/playlist/1GCAhSB8i64V4CWctPcyHY?utm_source=generator&theme=0"
+                  width="100%"
+                  height="160"
+                  style={{border: 0}}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
                 ></iframe>
               </div>
 
