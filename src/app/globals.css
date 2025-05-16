@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
+  /* Festival color palette */
+  --brown: #7a3c20;
+  --gold: #ffc700;
+  --teal: #7de6e9;
+  --blue: #237ea5;
+
+  /* Base colors */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Festival gradient variables */
+  --gradient-warm: linear-gradient(135deg, var(--brown), var(--gold));
+  --gradient-cool: linear-gradient(135deg, var(--teal), var(--blue));
+  --gradient-full: linear-gradient(135deg, var(--brown), var(--gold), var(--teal), var(--blue));
+  --gradient-vibrant: linear-gradient(to right, var(--gold), var(--teal));
 }
 
 @theme inline {
@@ -12,15 +25,117 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  overflow-x: hidden;
+}
+
+/* Custom utility classes */
+.bg-festival-gradient {
+  background: var(--gradient-full);
+}
+
+.bg-warm-gradient {
+  background: var(--gradient-warm);
+}
+
+.bg-cool-gradient {
+  background: var(--gradient-cool);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-warm-gradient {
+  background-image: var(--gradient-warm);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-cool-gradient {
+  background-image: var(--gradient-cool);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-festival-gradient {
+  background-image: var(--gradient-full);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Button styles */
+.btn-festival {
+  background: var(--gradient-vibrant);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-festival:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-festival:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-festival::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+  background: var(--gradient-full);
+}
+
+.btn-festival:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
