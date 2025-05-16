@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +26,9 @@ export default function Navbar() {
               </Link>
               <Link href="#lineup" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
               Lineup
+              </Link>
+              <Link href="#playlist" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
+                Playlist
               </Link>
               <Link href="#tickets" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
                 Tiket
@@ -84,6 +86,13 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(false)}
           >
             Lineup
+          </Link>
+          <Link
+            href="#playlist"
+            className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Playlist
           </Link>
           <Link
             href="#tickets"

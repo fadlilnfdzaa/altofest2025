@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 interface ContactFormProps {
-  type: 'ticket' | 'sponsor' | 'general';
+  type: 'ticket' | 'sponsor' | 'tenant' | 'general';
 }
 
 export default function ContactForm({ type }: ContactFormProps) {
@@ -28,12 +28,43 @@ export default function ContactForm({ type }: ContactFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
+    // Prepare WhatsApp message with form data
+    let whatsappNumber = '';
+    let message = '';
+
+    switch (type) {
+      case 'ticket':
+        whatsappNumber = '6285892405814';
+        message = `Halo, saya butuh bantuan untuk tiket ALTOFEST 2025.\n\nNama: ${formData.name}\nEmail: ${formData.email}\nID Tiket: ${formData.ticketId}\nPertanyaan: ${formData.message}`;
+        break;
+      case 'sponsor':
+        whatsappNumber = '6289517597874';
+        message = `Halo, saya tertarik untuk menjadi sponsor ALTOFEST 2025.\n\nNama: ${formData.name}\nPerusahaan: ${formData.companyName}\nEmail: ${formData.email}\nPesan: ${formData.message}`;
+        break;
+      case 'tenant':
+        whatsappNumber = '6281250109603';
+        message = `Halo, saya tertarik untuk menjadi tenant di ALTOFEST 2025.\n\nNama: ${formData.name}\nPerusahaan: ${formData.companyName}\nEmail: ${formData.email}\nPesan: ${formData.message}`;
+        break;
+      default: // general/technical
+        whatsappNumber = '6285724634057';
+        message = `Halo, saya tertarik untuk kolaborasi teknis dengan ALTOFEST 2025.\n\nNama: ${formData.name}\nEmail: ${formData.email}\nSubjek: ${formData.subject}\nPesan: ${formData.message}`;
+    }
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
+    // Show success message and reset form
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+
       // Reset form after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
@@ -47,7 +78,7 @@ export default function ContactForm({ type }: ContactFormProps) {
           sponsorshipLevel: '',
         });
       }, 3000);
-    }, 1500);
+    }, 1000);
   };
 
   const renderFormFields = () => {
@@ -56,7 +87,7 @@ export default function ContactForm({ type }: ContactFormProps) {
         return (
           <>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium mb-1">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-medium mb-1">Nama Lengkap</label>
               <input
                 type="text"
                 id="name"
@@ -68,7 +99,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">Alamat Email</label>
               <input
                 type="email"
                 id="email"
@@ -80,7 +111,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="ticketId" className="block text-sm font-medium mb-1">Ticket Reference ID</label>
+              <label htmlFor="ticketId" className="block text-sm font-medium mb-1">ID Referensi Tiket</label>
               <input
                 type="text"
                 id="ticketId"
@@ -92,7 +123,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="message" className="block text-sm font-medium mb-1">Your Question</label>
+              <label htmlFor="message" className="block text-sm font-medium mb-1">Pertanyaan Anda</label>
               <textarea
                 id="message"
                 name="message"
@@ -105,12 +136,12 @@ export default function ContactForm({ type }: ContactFormProps) {
             </div>
           </>
         );
-      
+
       case 'sponsor':
         return (
           <>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium mb-1">Contact Person</label>
+              <label htmlFor="name" className="block text-sm font-medium mb-1">Nama Kontak</label>
               <input
                 type="text"
                 id="name"
@@ -122,7 +153,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="companyName" className="block text-sm font-medium mb-1">Company/Organization Name</label>
+              <label htmlFor="companyName" className="block text-sm font-medium mb-1">Nama Perusahaan/Organisasi</label>
               <input
                 type="text"
                 id="companyName"
@@ -134,7 +165,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">Alamat Email</label>
               <input
                 type="email"
                 id="email"
@@ -146,25 +177,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="sponsorshipLevel" className="block text-sm font-medium mb-1">Sponsorship Level</label>
-              <select
-                id="sponsorshipLevel"
-                name="sponsorshipLevel"
-                value={formData.sponsorshipLevel}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7de6e9]"
-                required
-              >
-                <option value="">Select a level</option>
-                <option value="platinum">Platinum Partner</option>
-                <option value="gold">Gold Partner</option>
-                <option value="silver">Silver Partner</option>
-                <option value="bronze">Bronze Partner</option>
-                <option value="custom">Custom Partnership</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium mb-1">Pesan</label>
               <textarea
                 id="message"
                 name="message"
@@ -177,12 +190,12 @@ export default function ContactForm({ type }: ContactFormProps) {
             </div>
           </>
         );
-      
+
       default: // general contact
         return (
           <>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium mb-1">Your Name</label>
+              <label htmlFor="name" className="block text-sm font-medium mb-1">Nama Anda</label>
               <input
                 type="text"
                 id="name"
@@ -194,7 +207,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">Alamat Email</label>
               <input
                 type="email"
                 id="email"
@@ -206,7 +219,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
+              <label htmlFor="subject" className="block text-sm font-medium mb-1">Subjek</label>
               <input
                 type="text"
                 id="subject"
@@ -218,7 +231,7 @@ export default function ContactForm({ type }: ContactFormProps) {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium mb-1">Pesan</label>
               <textarea
                 id="message"
                 name="message"
@@ -237,11 +250,13 @@ export default function ContactForm({ type }: ContactFormProps) {
   const getFormTitle = () => {
     switch (type) {
       case 'ticket':
-        return 'Ticket Support';
+        return 'Bantuan Tiket';
       case 'sponsor':
-        return 'Sponsorship Inquiry';
+        return 'Kerjasama Sponsor';
+      case 'tenant':
+        return 'Pendaftaran Tenant';
       default:
-        return 'Contact Us';
+        return 'Kolaborasi Teknis';
     }
   };
 
@@ -259,16 +274,16 @@ export default function ContactForm({ type }: ContactFormProps) {
   return (
     <div className="w-full max-w-md mx-auto">
       <h3 className="text-2xl font-bold mb-6">{getFormTitle()}</h3>
-      
+
       {isSubmitted ? (
         <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
-          <p className="font-medium">Thank you for your message!</p>
-          <p className="text-sm">We'll get back to you as soon as possible.</p>
+          <p className="font-medium">Terima kasih atas pesan Anda!</p>
+          <p className="text-sm">Kami akan menghubungi Anda secepatnya melalui WhatsApp.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           {renderFormFields()}
-          
+
           <button
             type="submit"
             disabled={isSubmitting}
@@ -280,7 +295,7 @@ export default function ContactForm({ type }: ContactFormProps) {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
             ) : (
-              'Submit'
+              'Kirim'
             )}
           </button>
         </form>

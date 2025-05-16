@@ -117,7 +117,7 @@ export default function Home() {
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
-      gradient: "warm"
+      gradient: "warm" as const
     },
     {
       type: "Tiket Rombongan",
@@ -129,7 +129,7 @@ export default function Home() {
       ],
       link:"https://wa.me/6285775137051?text=Halo%20kak%20Saya%20mau%20pesan%20harga%20115k%20tiket%20Altofest%202025%0A- Email%20%3A%20%0A- Nama%20%3A%20%0A- Tanggal%20Lahir%20%3A%20%0A- Nama%20sekolah%20%2F%20kampus%20%3A%20%0A- Gender%20%3A%20%0A- No%20WA%20%3A%20%0A- INSTAGRAM%20%3A%20%0A- Mendapatkan%20info%20dari%20%3A%20%0A%0A-%20Transfer%20pembelian%20Tiket%20ke%20Nomor%20Dana%20%3A%20*085775137051*%20atau%20norek%20%3A1740-1529-78%20a.n%20%3A%20Mawardiansyah%20Bank%20BCA%F0%9F%99%8F%F0%9F%A4%97",
       popular: true,
-      gradient: "full"
+      gradient: "full" as const
     },
     {
       type: "Tiket VIP",
@@ -141,7 +141,7 @@ export default function Home() {
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
-      gradient: "cool"
+      gradient: "cool" as const
     }
   ];
 
@@ -222,7 +222,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-festival-gradient">🎶 Tentang Festival</h2>
             <div className="w-24 h-1 bg-festival-gradient mx-auto mb-8"></div>
             <p className="text-lg max-w-3xl mx-auto">
-            ALTOFEST 2025 adalah festival musik dan budaya terbesar di Bogor yang menampilkan kolaborasi antara musisi nasional dan seniman tradisional Sunda. 
+            ALTOFEST 2025 adalah festival musik dan budaya terbesar di Bogor yang menampilkan kolaborasi antara musisi nasional dan seniman tradisional Sunda.
             <br></br>Diselenggarakan oleh @alto.eo dan didukung oleh @alumnitutorial, festival ini akan berlangsung pada 28 Juni 2025 di Yonif 315 Garuda, Bogor. Jangan lewatkan kesempatan untuk menikmati pengalaman budaya dan musik yang tak terlupakan!
             </p>
           </div>
@@ -314,6 +314,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Spotify Playlist Section */}
+      <section id="playlist" className="py-20 bg-background relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-[#7a3c20]/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#237ea5]/10 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-festival-gradient">🎧 Playlist Resmi</h2>
+            <div className="w-24 h-1 bg-festival-gradient mx-auto mb-8"></div>
+            <p className="text-lg max-w-3xl mx-auto">
+              Rasakan semangat ALTOFEST 2025 melalui playlist resmi kami! Dengarkan lagu-lagu dari para artis yang akan tampil dan nikmati perpaduan musik modern dan tradisional Sunda yang akan mengisi festival.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="bg-foreground/5 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-[#ffc700]/20 max-w-3xl w-full hover:shadow-[0_0_30px_rgba(255,199,0,0.15)] transition-all">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
+                <iframe
+                  src="https://open.spotify.com/embed/playlist/1GCAhSB8i64V4CWctPcyHY?utm_source=generator&theme=0"
+                  width="100%"
+                  height="100%"
+                  style={{minHeight: '380px', border: 0}}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  className="absolute inset-0"
+                ></iframe>
+              </div>
+
+              <div className="mt-6 text-center">
+                <p className="text-foreground/70 text-sm">
+                  Dengarkan playlist ini untuk merasakan nuansa ALTOFEST 2025 dan bersiap untuk pengalaman festival yang tak terlupakan!
+                </p>
+                <a
+                  href="https://open.spotify.com/playlist/1GCAhSB8i64V4CWctPcyHY?si=HUusrE_rQK-remtbAUWopQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 bg-[#1DB954] text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-[#1ED760] transition-all"
+                >
+                  Buka di Spotify
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tickets Section */}
       <section id="tickets" className="py-20 bg-background relative overflow-hidden">
         {/* Decorative background elements */}
@@ -345,7 +392,7 @@ export default function Home() {
 
           <div className="mt-16 text-center">
             <p className="text-foreground/70 mb-4">
-              Diskon grup tersedia untuk rombongan 10 orang atau lebih. Pembelian tiket resmi hanya melalui website <a href="https://www.yesplis.com/event/altofest-2025" className="text-[#237ea5] hover:underline">www.yesplis.com/event/altofest-2025</a>
+              Diskon grup tersedia untuk rombongan 3 orang atau lebih. Pembelian tiket resmi hanya melalui website <a href="https://www.yesplis.com/event/altofest-2025" className="text-[#237ea5] hover:underline">www.yesplis.com/event/altofest-2025</a>
             </p>
             <Link
               href="#contact"
@@ -390,13 +437,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-foreground/5 p-8 rounded-2xl">
               <ContactForm type="ticket" />
             </div>
 
             <div className="bg-foreground/5 p-8 rounded-2xl">
               <ContactForm type="sponsor" />
+            </div>
+
+            <div className="bg-foreground/5 p-8 rounded-2xl">
+              <ContactForm type="tenant" />
             </div>
 
             <div className="bg-foreground/5 p-8 rounded-2xl">
