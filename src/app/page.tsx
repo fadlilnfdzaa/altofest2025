@@ -112,7 +112,7 @@ export default function Home() {
   // Ticket options
   const ticketOptions = [
     {
-      type: "Tiket PROMO BALAREA 1",
+      type: "Tiket GEULIS by Emina",
       price: "Rp115.000",
       features: [
         "Akses ke Stage Festival",
