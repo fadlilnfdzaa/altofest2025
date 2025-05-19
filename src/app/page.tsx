@@ -119,7 +119,7 @@ export default function Home() {
         "Emina Paperbag",
         "Dengan Harga Lebih Murah*"
       ],
-      link:"https://wa.me/6285775137051?text=Halo%20kak%20Saya%20mau%20pesan%20harga%20115k%20tiket%20Altofest%202025%0A- Email%20%3A%20%0A- Nama%20%3A%20%0A- Tanggal%20Lahir%20%3A%20%0A- Nama%20sekolah%20%2F%20kampus%20%3A%20%0A- Gender%20%3A%20%0A- No%20WA%20%3A%20%0A- INSTAGRAM%20%3A%20%0A- Mendapatkan%20info%20dari%20%3A%20%0A%0A-%20Transfer%20pembelian%20Tiket%20ke%20Nomor%20Dana%20%3A%20*085775137051*%20atau%20norek%20%3A1740-1529-78%20a.n%20%3A%20Mawardiansyah%20Bank%20BCA%F0%9F%99%8F%F0%9F%A4%97",
+      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: true,
       gradient: "full" as const
     },
