@@ -1,5 +1,8 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { trackNavigation, trackTicketClick, trackSocialClick } from "@/utils/clickTracker";
 
 // Import components
 import Navbar from "@/components/Navbar";
@@ -233,12 +236,14 @@ export default function Home() {
             <Link
               href="#tickets"
               className="bg-[#333333] text-[#FFC700] font-bold py-4 px-10 rounded-full text-lg shadow-lg border border-[#FFC700]/50 hover:bg-[#444444] transition-all"
+              onClick={() => trackTicketClick('Dapatkan Tiket (Hero)', '#tickets')}
             >
               Dapatkan Tiket
             </Link>
             <Link
               href="#lineup"
               className="bg-[#FFC700] backdrop-blur-sm hover:bg-[#FFD700] text-[#333333] font-bold py-4 px-10 rounded-full text-lg transition-all border border-[#333333]/20 shadow-lg hover:shadow-xl"
+              onClick={() => trackNavigation('Lihat Lineup (Hero)', '#lineup')}
             >
               Lihat Lineup
             </Link>
@@ -309,7 +314,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-warm-gradient">Lineup Artis</h2>
             <div className="w-24 h-1 bg-warm-gradient mx-auto mb-8"></div>
             <p className="text-lg max-w-3xl mx-auto text-background/80">
-              Saksikan penampilan spektakuler dari Maliq & D'Essentials, Reality Club, The Changcuters, dan kolaborasi spesial dengan seniman tradisional Sunda dalam satu panggung megah!
+              Saksikan penampilan spektakuler dari Maliq & D'Essentials, HiVi, The Changcuters,  Reality Club, Rumahsakit, dan kolaborasi spesial dengan seniman tradisional Sunda dalam satu panggung megah!
             </p>
           </div>
 
@@ -342,6 +347,7 @@ export default function Home() {
             <Link
               href="#tickets"
               className="bg-warm-gradient text-white font-bold py-3 px-8 rounded-full hover:shadow-lg transition-all"
+              onClick={() => trackTicketClick('Dapatkan Tiket Sekarang (Lineup)', '#tickets')}
             >
               Dapatkan Tiket Sekarang
             </Link>
@@ -400,6 +406,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-4 bg-[#1DB954] text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-[#1ED760] transition-all"
+                  onClick={() => trackSocialClick('Buka di Spotify', 'https://open.spotify.com/playlist/1GCAhSB8i64V4CWctPcyHY?si=HUusrE_rQK-remtbAUWopQ')}
                 >
                   Buka di Spotify
                 </a>
@@ -440,11 +447,18 @@ export default function Home() {
 
           <div className="mt-16 text-center">
             <p className="text-foreground/70 mb-4">
-              Diskon grup tersedia untuk rombongan 3 orang atau lebih. Pembelian tiket resmi hanya melalui official partner dan website <a href="https://www.yesplis.com/event/altofest-2025" className="text-[#237ea5] hover:underline">www.yesplis.com/event/altofest-2025</a>
+              Diskon grup tersedia untuk rombongan 3 orang atau lebih. Pembelian tiket resmi hanya melalui official partner dan website <a
+                href="https://www.yesplis.com/event/altofest-2025"
+                className="text-[#237ea5] hover:underline"
+                onClick={() => trackTicketClick('Yesplis Website Link', 'https://www.yesplis.com/event/altofest-2025')}
+              >
+                www.yesplis.com/event/altofest-2025
+              </a>
             </p>
             <Link
               href="#contact"
               className="text-[#237ea5] hover:underline font-medium"
+              onClick={() => trackNavigation('Pertanyaan Tiket WhatsApp Link', '#contact')}
             >
               Punya pertanyaan tentang tiket? Hubungi tim kami via WhatsApp →
             </Link>
@@ -467,6 +481,7 @@ export default function Home() {
             <Link
               href="#contact"
               className="btn-festival text-white font-bold py-3 px-8 rounded-full"
+              onClick={() => trackNavigation('Jadi Mitra Kami (Sponsors)', '#contact')}
             >
               Jadi Mitra Kami
             </Link>

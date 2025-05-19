@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { trackTicketClick } from '@/utils/clickTracker';
 
 interface TicketCardProps {
   type: string;
@@ -14,7 +15,7 @@ interface TicketCardProps {
 
 export default function TicketCard({ type, price, features, popular = false, gradient,link}: TicketCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   let gradientClass = '';
   switch(gradient) {
     case 'warm':
@@ -31,7 +32,7 @@ export default function TicketCard({ type, price, features, popular = false, gra
   }
 
   return (
-    <div 
+    <div
       className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
         isHovered ? 'transform scale-105' : ''
       } ${popular ? 'border-2 border-[#ffc700]' : 'border border-foreground/10'}`}
@@ -43,7 +44,7 @@ export default function TicketCard({ type, price, features, popular = false, gra
           PENAWARAN TERBAIK
         </div>
       )}
-      
+
       <div className="p-6 bg-background">
         <div className="mb-4">
           <h3 className={`text-2xl font-bold mb-2 text-${gradient}-gradient`}>{type}</h3>
@@ -52,7 +53,7 @@ export default function TicketCard({ type, price, features, popular = false, gra
             <span className="text-foreground/70 ml-1">/person</span>
           </div>
         </div>
-        
+
         <ul className="mb-6 space-y-2">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start">
@@ -63,8 +64,12 @@ export default function TicketCard({ type, price, features, popular = false, gra
             </li>
           ))}
         </ul>
-        
-        <Link href={link} target="_blank">
+
+        <Link
+          href={link}
+          target="_blank"
+          onClick={() => trackTicketClick(type, link)}
+        >
           <button className={`w-full py-3 px-4 rounded-full text-white font-medium transition-all ${gradientClass} hover:shadow-lg`}>
             BELI TIKET
           </button>

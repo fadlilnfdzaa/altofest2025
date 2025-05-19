@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { trackNavigation } from '@/utils/clickTracker';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,27 +22,52 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <Link href="#about" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
-              Tentang
+              <Link
+                href="#about"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Tentang', '#about')}
+              >
+                Tentang
               </Link>
-              <Link href="#lineup" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
-              Lineup
+              <Link
+                href="#lineup"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Lineup', '#lineup')}
+              >
+                Lineup
               </Link>
-              <Link href="#playlist" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
+              <Link
+                href="#playlist"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Playlist', '#playlist')}
+              >
                 Playlist
               </Link>
-              <Link href="#tickets" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
+              <Link
+                href="#tickets"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Tiket', '#tickets')}
+              >
                 Tiket
               </Link>
-              <Link href="#sponsors" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
+              <Link
+                href="#sponsors"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Sponsor', '#sponsors')}
+              >
                 Sponsor
               </Link>
-              <Link href="#contact" className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors">
+              <Link
+                href="#contact"
+                className="text-[#333333] hover:text-[#8B4513] font-medium transition-colors"
+                onClick={() => trackNavigation('Kontak', '#contact')}
+              >
                 Kontak
               </Link>
               <Link
                 href="#tickets"
                 className="bg-[#333333] text-[#FFC700] font-medium py-2 px-6 rounded-full hover:bg-[#444444] transition-all border border-[#FFC700]/50 shadow-md"
+                onClick={() => trackNavigation('Dapatkan Tiket (Button)', '#tickets')}
               >
                 Dapatkan Tiket
               </Link>
@@ -76,49 +102,70 @@ export default function Navbar() {
           <Link
             href="#about"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('About (Mobile)', '#about');
+            }}
           >
             About
           </Link>
           <Link
             href="#lineup"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Lineup (Mobile)', '#lineup');
+            }}
           >
             Lineup
           </Link>
           <Link
             href="#playlist"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Playlist (Mobile)', '#playlist');
+            }}
           >
             Playlist
           </Link>
           <Link
             href="#tickets"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Tickets (Mobile)', '#tickets');
+            }}
           >
             Tickets
           </Link>
           <Link
             href="#sponsors"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Sponsors (Mobile)', '#sponsors');
+            }}
           >
             Sponsors
           </Link>
           <Link
             href="#contact"
             className="block px-3 py-2 rounded-md text-base font-medium text-[#333333] hover:text-[#8B4513]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Contact (Mobile)', '#contact');
+            }}
           >
             Contact
           </Link>
           <Link
             href="#tickets"
             className="block px-3 py-2 mt-4 bg-[#333333] text-[#FFC700] font-medium rounded-full text-center border border-[#FFC700]/50 shadow-md"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackNavigation('Get Tickets (Mobile Button)', '#tickets');
+            }}
           >
             Get Tickets
           </Link>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackContactClick } from '@/utils/clickTracker';
 
 interface ContactFormProps {
   type: 'ticket' | 'sponsor' | 'tenant' | 'general';
@@ -56,6 +57,9 @@ export default function ContactForm({ type }: ContactFormProps) {
 
     // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Track the contact click
+    trackContactClick(`${type.charAt(0).toUpperCase() + type.slice(1)} Form Submission`, whatsappUrl);
 
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');
@@ -288,6 +292,11 @@ export default function ContactForm({ type }: ContactFormProps) {
             type="submit"
             disabled={isSubmitting}
             className={`w-full py-3 px-4 rounded-full text-white font-medium transition-all ${getButtonColor()} hover:shadow-lg flex justify-center items-center`}
+            onClick={() => {
+              if (!isSubmitting) {
+                trackContactClick(`${type.charAt(0).toUpperCase() + type.slice(1)} Form Button Click`);
+              }
+            }}
           >
             {isSubmitting ? (
               <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
