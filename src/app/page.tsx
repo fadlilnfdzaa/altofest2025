@@ -136,6 +136,21 @@ export default function Home() {
       gradient: "warm" as const
     },
     {
+      type: "Tiket VIP",
+      price: "Rp305.000",
+      features: [
+        "Area menonton premium",
+        "Fast Track Entry",
+        "Akses Toilet Portabel Khusus",
+        "Produk Emina",
+        "2 Voucher Tenant",
+        "Merchandise"
+      ],
+      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
+      popular: false,
+      gradient: "cool" as const
+    },
+    {
       type: "Balarea 1 Rombongan 3",
       price: "Rp145.000",
       features: [
@@ -162,21 +177,6 @@ export default function Home() {
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
       gradient: "warm" as const
-    },
-    {
-      type: "Tiket VIP",
-      price: "Rp295.000",
-      features: [
-        "Area menonton premium",
-        "Fast Track Entry",
-        "Akses Toilet Portabel Khusus",
-        "Produk Emina",
-        "Voucher Tenant",
-        "Merchandise"
-      ],
-      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
-      popular: false,
-      gradient: "cool" as const
     }
   ];
 
@@ -440,7 +440,7 @@ export default function Home() {
 
           <div className="mt-16 text-center">
             <p className="text-foreground/70 mb-4">
-              Diskon grup tersedia untuk rombongan 3 orang atau lebih. Pembelian tiket resmi hanya melalui website <a href="https://www.yesplis.com/event/altofest-2025" className="text-[#237ea5] hover:underline">www.yesplis.com/event/altofest-2025</a>
+              Diskon grup tersedia untuk rombongan 3 orang atau lebih. Pembelian tiket resmi hanya melalui official partner dan website <a href="https://www.yesplis.com/event/altofest-2025" className="text-[#237ea5] hover:underline">www.yesplis.com/event/altofest-2025</a>
             </p>
             <Link
               href="#contact"
