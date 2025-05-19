@@ -109,22 +109,14 @@ export default function Home() {
   // Ticket options
   const ticketOptions = [
     {
-      type: "Tiket Heheulaan 3",
-      price: "Rp135.000",
+      type: "Tiket PROMO BALAREA 1",
+      price: "Rp115.000",
       features: [
         "Akses ke Stage Festival",
         "Akses area kuliner",
-      ],
-      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
-      popular: false,
-      gradient: "warm" as const
-    },
-    {
-      type: "Tiket Rombongan",
-      price: "Rp115.000",
-      features: [
-        "Akses ke semua panggung",
-        "Akses area kuliner",
+        "Emina Sun Battle Bright Glow SPF 35 PA+++",
+        "Emina Hand Fan",
+        "Emina Paperbag",
         "Dengan Harga Lebih Murah*"
       ],
       link:"https://wa.me/6285775137051?text=Halo%20kak%20Saya%20mau%20pesan%20harga%20115k%20tiket%20Altofest%202025%0A- Email%20%3A%20%0A- Nama%20%3A%20%0A- Tanggal%20Lahir%20%3A%20%0A- Nama%20sekolah%20%2F%20kampus%20%3A%20%0A- Gender%20%3A%20%0A- No%20WA%20%3A%20%0A- INSTAGRAM%20%3A%20%0A- Mendapatkan%20info%20dari%20%3A%20%0A%0A-%20Transfer%20pembelian%20Tiket%20ke%20Nomor%20Dana%20%3A%20*085775137051*%20atau%20norek%20%3A1740-1529-78%20a.n%20%3A%20Mawardiansyah%20Bank%20BCA%F0%9F%99%8F%F0%9F%A4%97",
@@ -132,12 +124,55 @@ export default function Home() {
       gradient: "full" as const
     },
     {
+      type: "Tiket BALAREA 1",
+      price: "Rp155.000",
+      features: [
+        "Akses ke Stage Festival",
+        "Akses area kuliner",
+        "Produk Emina + 1 voucher tenant"
+      ],
+      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
+      popular: false,
+      gradient: "warm" as const
+    },
+    {
+      type: "Balarea 1 Rombongan 3",
+      price: "Rp145.000",
+      features: [
+        "Harga per orang",
+        "Minimal pembelian 3 tiket",
+        "Akses ke Stage Festival",
+        "Akses area kuliner",
+        "Produk Emina + 1 voucher tenant"
+      ],
+      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
+      popular: false,
+      gradient: "warm" as const
+    },
+    {
+      type: "Balarea 1 Rombongan 5",
+      price: "Rp135.000",
+      features: [
+        "Harga per orang",
+        "Minimal pembelian 5 tiket",
+        "Akses ke Stage Festival",
+        "Akses area kuliner",
+        "Produk Emina + 1 voucher tenant"
+      ],
+      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
+      popular: false,
+      gradient: "warm" as const
+    },
+    {
       type: "Tiket VIP",
       price: "Rp295.000",
       features: [
         "Area menonton premium",
         "Fast Track Entry",
-        "Akses Toilet Portabel Khusus"
+        "Akses Toilet Portabel Khusus",
+        "Produk Emina",
+        "Voucher Tenant",
+        "Merchandise"
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
@@ -175,8 +210,8 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-float">
-            <span className="block text-[#333333] drop-shadow-lg">ALTOFEST 2025</span>
-            <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-[#333333] drop-shadow-lg">Muda Sunda, Jaga Budaya</span>
+            <span className="block text-white drop-shadow-lg">ALTOFEST 2025</span>
+            <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-white drop-shadow-lg">Muda Sunda, Jaga Budaya</span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-[#333333] drop-shadow-lg">
