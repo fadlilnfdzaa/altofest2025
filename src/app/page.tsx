@@ -11,6 +11,8 @@ import ArtistCard from "@/components/ArtistCard";
 import SponsorCard from "@/components/SponsorCard";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import BackgroundMusic from "@/components/BackgroundMusic";
+import YouTubeBackgroundMusic from "@/components/YouTubeBackgroundMusic";
 
 export default function Home() {
   // Sample artist data
@@ -186,6 +188,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      {/* Use either BackgroundMusic or YouTubeBackgroundMusic */}
+      <BackgroundMusic audioSrc="/bg-music.mp3" />
+      {/* Uncomment the line below and comment the line above to use YouTube as background music source */}
+      {/* <YouTubeBackgroundMusic videoId="q-gp58dQiSQ" /> */}
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">

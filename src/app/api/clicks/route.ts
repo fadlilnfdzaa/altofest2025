@@ -1,78 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { initializeDatabase, addClickEvent, getClickEvents, ClickEvent } from '@/lib/db';
 
-// Define the path to the JSON file
-const dataDir = path.join(process.cwd(), 'data');
-const dataFilePath = path.join(dataDir, 'clicks.json');
-
-// Define the structure of a click event
-interface ClickEvent {
-  category: string;
-  label: string;
-  url?: string;
-  timestamp: string;
-}
-
-// Define the structure of the clicks data
-interface ClicksData {
-  events: ClickEvent[];
-  categoryCounts: Record<string, number>;
-  labelCounts: Record<string, number>;
-  urlCounts: Record<string, number>;
-  totalClicks: number;
-}
-
-// Initialize the data file if it doesn't exist
-function initializeDataFile() {
-  // Create the data directory if it doesn't exist
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-
-  // Create the data file if it doesn't exist
-  if (!fs.existsSync(dataFilePath)) {
-    const initialData: ClicksData = {
-      events: [],
-      categoryCounts: {},
-      labelCounts: {},
-      urlCounts: {},
-      totalClicks: 0
-    };
-    fs.writeFileSync(dataFilePath, JSON.stringify(initialData, null, 2));
-  }
-}
-
-// Read the clicks data from the file
-function readClicksData(): ClicksData {
-  try {
-    initializeDataFile();
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error reading clicks data:', error);
-    return {
-      events: [],
-      categoryCounts: {},
-      labelCounts: {},
-      urlCounts: {},
-      totalClicks: 0
-    };
-  }
-}
-
-// Write the clicks data to the file
-function writeClicksData(data: ClicksData) {
-  try {
-    fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing clicks data:', error);
-  }
-}
+// Initialize the database on first request
+let databaseInitialized = false;
 
 // Handle POST requests to track clicks
 export async function POST(request: NextRequest) {
   try {
+    // Initialize the database if it hasn't been initialized yet
+    if (!databaseInitialized) {
+      await initializeDatabase();
+      databaseInitialized = true;
+    }
+
     const { category, label, url } = await request.json();
 
     if (!category || !label) {
@@ -90,26 +30,12 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     };
 
-    // Read the current data
-    const data = readClicksData();
+    // Add the click event to the database
+    const success = await addClickEvent(clickEvent);
 
-    // Update the data
-    data.events.push(clickEvent);
-    data.totalClicks++;
-
-    // Update category counts
-    data.categoryCounts[category] = (data.categoryCounts[category] || 0) + 1;
-
-    // Update label counts
-    data.labelCounts[label] = (data.labelCounts[label] || 0) + 1;
-
-    // Update URL counts if URL is provided
-    if (url) {
-      data.urlCounts[url] = (data.urlCounts[url] || 0) + 1;
+    if (!success) {
+      throw new Error('Failed to add click event to database');
     }
-
-    // Write the updated data back to the file
-    writeClicksData(data);
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -124,7 +50,14 @@ export async function POST(request: NextRequest) {
 // Handle GET requests to retrieve click statistics
 export async function GET() {
   try {
-    const data = readClicksData();
+    // Initialize the database if it hasn't been initialized yet
+    if (!databaseInitialized) {
+      await initializeDatabase();
+      databaseInitialized = true;
+    }
+
+    // Get all click events from the database
+    const data = await getClickEvents();
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error retrieving click statistics:', error);
