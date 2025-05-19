@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { initializeDatabase, addClickEvent, getClickEvents, ClickEvent } from '@/lib/db';
 
+// Environment variables are automatically loaded in API routes
+
 // Initialize the database on first request
 let databaseInitialized = false;
 
