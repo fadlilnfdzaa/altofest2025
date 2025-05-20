@@ -224,7 +224,7 @@ export default function Home() {
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-[#333333] drop-shadow-lg">
-          🎉SIAPIN DIRI BUAT FESTIVAL PALING WELL TAHUN INI! TIKET HEHEULAAN 115K TERAKHIR, JANGAN SAMPAI KETINGGALAN!🎉
+          🎉SIAPIN DIRI BUAT FESTIVAL PALING WELL TAHUN INI! TIKET 115K TERAKHIR, JANGAN SAMPAI KETINGGALAN!🎉
           </p>
 
           {/* Info badges with enhanced styling */}
