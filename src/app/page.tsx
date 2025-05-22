@@ -114,27 +114,28 @@ export default function Home() {
   // Ticket options
   const ticketOptions = [
     {
-      type: "Tiket GEULIS by Emina",
-      price: "Rp115.000",
+      type: "Tiket BALAREA 1",
+      price: "Rp155.000",
       features: [
         "Akses ke Stage Festival",
         "Akses area kuliner",
         "Emina Sun Battle Bright Glow SPF 35 PA+++",
         "Emina Hand Fan",
-        "Emina Paperbag",
-        "Dengan Harga Lebih Murah*"
+        "Emina Paperbag"
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: true,
       gradient: "full" as const
     },
     {
-      type: "Tiket BALAREA 1",
-      price: "Rp155.000",
+      type: "Balarea 1 Rombongan 3",
+      price: "Rp145.000",
       features: [
+        "Harga per orang",
+        "Minimal pembelian 3 tiket",
         "Akses ke Stage Festival",
         "Akses area kuliner",
-        "Produk Emina + 1 voucher tenant"
+        "3 Produk Emina + 3 voucher tenant"
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
@@ -156,20 +157,6 @@ export default function Home() {
       gradient: "cool" as const
     },
     {
-      type: "Balarea 1 Rombongan 3",
-      price: "Rp145.000",
-      features: [
-        "Harga per orang",
-        "Minimal pembelian 3 tiket",
-        "Akses ke Stage Festival",
-        "Akses area kuliner",
-        "Produk Emina + 1 voucher tenant"
-      ],
-      link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
-      popular: false,
-      gradient: "warm" as const
-    },
-    {
       type: "Balarea 1 Rombongan 5",
       price: "Rp135.000",
       features: [
@@ -177,7 +164,7 @@ export default function Home() {
         "Minimal pembelian 5 tiket",
         "Akses ke Stage Festival",
         "Akses area kuliner",
-        "Produk Emina + 1 voucher tenant"
+        "5 Produk Emina + 5 voucher tenant"
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
       popular: false,
