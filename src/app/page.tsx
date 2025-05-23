@@ -149,7 +149,7 @@ export default function Home() {
         "Fast Track Entry",
         "Akses Toilet Portabel Khusus",
         "Produk Emina",
-        "2 Voucher Tenant",
+        "5 Voucher Tenant",
         "Merchandise"
       ],
       link:"https://www.yesplis.com/event/altofest-2025/tickets?fbclid=PAQ0xDSwKJcU1leHRuA2FlbQIxMQABpywaEns-gIT6HYtRNSHhyJkqCkaMWODxNjfaq7uGtdjLPQ4nBZtbiZ5vhbpe_aem_wykXFEoVePIN1b_gytl2Aw",
